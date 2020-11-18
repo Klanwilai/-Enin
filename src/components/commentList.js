@@ -8,9 +8,7 @@ const Comment = ({comments, userId, handleDelete}) => {
       method: 'DELETE',
     });
 
-    comments.splice(index, 1);
-
-    handleDelete();
+    handleDelete(index);
   };
   
   return(

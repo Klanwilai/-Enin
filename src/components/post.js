@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import Comments from './comments'
 
-const Post = ({post, userData, handleDelete, handleToggle}) => {
+const Post = ({post, userData, incrementCounter}) => {
   const [showComment, setShowComment] = useState(false); 
 
   const user = userData.find(e => post.userId === e.id);
 
   function handleShowComment() {
     setShowComment(!showComment);
-    handleToggle();
-    console.log(user);
+    incrementCounter();
   }
 
   return(
@@ -27,7 +26,7 @@ const Post = ({post, userData, handleDelete, handleToggle}) => {
         </li>
         <button onClick={handleShowComment}>{showComment ? "Hide comment(s)" : "Show comment(s)"}</button>
       </div>
-      {showComment && <Comments postId={post.id} handleDelete={handleDelete}/>}
+      {showComment && <Comments postId={post.id} incrementCounter={incrementCounter}/>}
     </div>
   );
 };
